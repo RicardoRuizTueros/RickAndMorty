@@ -17,13 +17,14 @@ protocol CharacterListDisplayLogic: class
     func displayCharacterList(viewModel: CharacterList.LoadCharacters.ViewModel)
 }
 
-class CharacterListViewController: UITableViewController, CharacterListDisplayLogic
+class CharacterListViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CharacterListDisplayLogic
 {
     var characterList : [Character] = []
     var interactor: CharacterListBusinessLogic?
     var router: (NSObjectProtocol & CharacterListRoutingLogic & CharacterListDataPassing)?
     
     let searchController = UISearchController(searchResultsController: nil)
+    let layout = UICollectionViewFlowLayout()
     
     // MARK: Object lifecycle
     
@@ -56,10 +57,22 @@ class CharacterListViewController: UITableViewController, CharacterListDisplayLo
         router.viewController = viewController
         router.dataStore = interactor
         
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         title = "Character List"
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(CharacterCell.self, forCellReuseIdentifier: "CharacterCell")
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(CharacterCell.self, forCellWithReuseIdentifier: "CharacterCell")
+        
+        view.backgroundColor = .white
+        collectionView.backgroundColor = .white
+        
+        collectionView.addSubview(searchController.searchBar)
+        
+        searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false;
+        searchController.searchBar.widthAnchor.constraint(equalTo: collectionView.widthAnchor, constant: 0.95).isActive = true
+        searchController.searchBar.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        searchController.searchBar.topAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.topAnchor).isActive = true
+        searchController.searchBar.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
         
         loadCharacterList()
     }
@@ -95,61 +108,47 @@ class CharacterListViewController: UITableViewController, CharacterListDisplayLo
     func displayCharacterList(viewModel: CharacterList.LoadCharacters.ViewModel)
     {
         characterList = viewModel.characterListResult
-        tableView.reloadData()
+        collectionView.reloadData()
     }
     
-    // MARK: Tableview delegates
+    // MARK: Collectionview delegates
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        
-        headerView.addSubview(searchController.searchBar)
-        
-        searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false;
-        
-        searchController.searchBar.widthAnchor.constraint(equalTo: headerView.widthAnchor, constant: 0.95).isActive = true
-        searchController.searchBar.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        searchController.searchBar.topAnchor.constraint(equalTo: headerView.safeAreaLayoutGuide.topAnchor).isActive = true
-        searchController.searchBar.centerXAnchor.constraint(equalTo: headerView.centerXAnchor).isActive = true
-        
-        return headerView
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let character = characterList[indexPath.row]
-        let cell = CharacterCell(character: character)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(CharacterDetails(sender:)))
+        let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCell", for: indexPath) as? CharacterCell
         
-        cell.addGestureRecognizer(tapGesture)
-        
-        return cell
+        characterCell!.SetCharacter(character: character)
+                
+        return characterCell!
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 100
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        router?.dataStore?.character = characterList[indexPath.row]
+        router?.routeToCharacterDetails()
     }
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return characterList.count
     }
     
-    // MARK: Selector
+    override func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
-    @objc func CharacterDetails(sender : UITapGestureRecognizer)
-    {
-        if let cell = sender.view as? CharacterCell {
-            if let index = tableView.indexPath(for: cell)?.row {
-                router?.dataStore?.character = characterList[index]
-                router?.routeToCharacterDetails()
-            }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if UIDevice.current.orientation.isLandscape {
+            return CGSize(width: UIScreen.main.bounds.size.width / 2 - 20, height: 100)
+        } else {
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 100)
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: 100, height: 100)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.collectionViewLayout.invalidateLayout()
     }
 }
