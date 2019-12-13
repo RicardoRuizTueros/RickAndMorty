@@ -73,8 +73,6 @@ class CharacterListViewController: UICollectionViewController, UICollectionViewD
         searchController.searchBar.heightAnchor.constraint(equalToConstant: 70).isActive = true
         searchController.searchBar.topAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.topAnchor).isActive = true
         searchController.searchBar.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
-        
-        loadCharacterList()
     }
     
     // MARK: Routing
@@ -94,6 +92,7 @@ class CharacterListViewController: UICollectionViewController, UICollectionViewD
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
         loadCharacterList()
     }
     

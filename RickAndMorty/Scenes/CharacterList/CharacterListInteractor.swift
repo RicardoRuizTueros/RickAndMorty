@@ -27,13 +27,12 @@ class CharacterListInteractor: CharacterListBusinessLogic, CharacterListDataStor
     var character: Character?
     
     var presenter: CharacterListPresentationLogic?
-    var worker: CharacterListWorker?
+    var worker: CharacterListWorker? = CharacterListWorker()
     
     // MARK: Do something
     
     func loadCharacterList(request: CharacterList.LoadCharacters.Request)
     {
-        worker = CharacterListWorker()
         worker?.loadCharacterList { characterListresult in
             let response = CharacterList.LoadCharacters.Response(characterListResult: characterListresult)
             self.presenter?.presentCharacterList(response: response)

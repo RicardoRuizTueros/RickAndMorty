@@ -3,4 +3,182 @@
    uuid = "89AA739F-B78E-46D0-91DD-204C6B7B0D11"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E6F62737-D9E2-4100-8C13-82AEC35C44C3"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyTests/CharacterDetails/CharacterListViewControllerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "testDisplayCharacters()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2B6F7505-6FD5-4E69-96F3-E685632C5EE7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMorty/Scenes/CharacterList/CharacterListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "displayCharacterList(viewModel:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2B6F7505-6FD5-4E69-96F3-E685632C5EE7 - cf242378e509c045"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty.CharacterListViewController.displayCharacterList(viewModel: RickAndMorty.CharacterList.LoadCharacters.ViewModel) -&gt; ()"
+                  moduleName = "RickAndMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardo/Downloads/RickAndMorty/RickAndMorty/Scenes/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "87">
+               </Location>
+               <Location
+                  uuid = "2B6F7505-6FD5-4E69-96F3-E685632C5EE7 - 36ae9f0c83cc377b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMortyTests.CharacterListViewController.displayCharacterList(viewModel: RickAndMortyTests.CharacterList.LoadCharacters.ViewModel) -&gt; ()"
+                  moduleName = "RickAndMortyTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardo/Downloads/RickAndMorty/RickAndMorty/Scenes/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "109"
+                  endingLineNumber = "109"
+                  offsetFromSymbolStart = "87">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D76066AE-5A1B-4582-9AB2-086CB05DE3EC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMorty/Scenes/CharacterList/CharacterListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "116"
+            endingLineNumber = "116"
+            landmarkName = "collectionView(_:cellForItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "D76066AE-5A1B-4582-9AB2-086CB05DE3EC - d90d8ea72830afdc"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty.CharacterListViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "RickAndMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardo/Downloads/RickAndMorty/RickAndMorty/Scenes/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "160">
+               </Location>
+               <Location
+                  uuid = "D76066AE-5A1B-4582-9AB2-086CB05DE3EC - ee30aabeec28b3e5"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMortyTests.CharacterListViewController.collectionView(_: __C.UICollectionView, cellForItemAt: Foundation.IndexPath) -&gt; __C.UICollectionViewCell"
+                  moduleName = "RickAndMortyTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardo/Downloads/RickAndMorty/RickAndMorty/Scenes/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "116"
+                  endingLineNumber = "116"
+                  offsetFromSymbolStart = "160">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "ED496FA2-ED53-416B-B508-9109BDCFC4D7"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMortyTests/CharacterDetails/CharacterListViewControllerTests.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "86"
+            endingLineNumber = "86"
+            landmarkName = "testDisplayCharacters()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6EEB4C96-0B72-4EF4-93AA-0A7DFED423C9"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RickAndMorty/Scenes/CharacterList/CharacterListViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "110"
+            endingLineNumber = "110"
+            landmarkName = "displayCharacterList(viewModel:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "6EEB4C96-0B72-4EF4-93AA-0A7DFED423C9 - cf242378e509c045"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMorty.CharacterListViewController.displayCharacterList(viewModel: RickAndMorty.CharacterList.LoadCharacters.ViewModel) -&gt; ()"
+                  moduleName = "RickAndMorty"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardo/Downloads/RickAndMorty/RickAndMorty/Scenes/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "145">
+               </Location>
+               <Location
+                  uuid = "6EEB4C96-0B72-4EF4-93AA-0A7DFED423C9 - 36ae9f0c83cc377b"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "RickAndMortyTests.CharacterListViewController.displayCharacterList(viewModel: RickAndMortyTests.CharacterList.LoadCharacters.ViewModel) -&gt; ()"
+                  moduleName = "RickAndMortyTests"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/ricardo/Downloads/RickAndMorty/RickAndMorty/Scenes/CharacterList/CharacterListViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "110"
+                  endingLineNumber = "110"
+                  offsetFromSymbolStart = "145">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>
