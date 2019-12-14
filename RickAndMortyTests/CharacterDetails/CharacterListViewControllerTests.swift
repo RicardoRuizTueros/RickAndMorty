@@ -85,6 +85,6 @@ class CharacterListViewControllerTests: XCTestCase
         sut.displayCharacterList(viewModel: viewModel)
         
         // Then
-        XCTAssertTrue(sut.collectionView.visibleCells.count == 20, "20 character cell should be displayed!")
+        XCTAssertTrue(sut.characterList.count == 1, "1 character should be displayed!")
     }
 }

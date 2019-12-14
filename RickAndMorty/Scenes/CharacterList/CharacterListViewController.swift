@@ -17,13 +17,14 @@ protocol CharacterListDisplayLogic: class
     func displayCharacterList(viewModel: CharacterList.LoadCharacters.ViewModel)
 }
 
-class CharacterListViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, CharacterListDisplayLogic
+class CharacterListViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout, UISearchBarDelegate, CharacterListDisplayLogic
 {
     var characterList : [Character] = []
+    var filteredCharacters : [Character] = []
     var interactor: CharacterListBusinessLogic?
     var router: (NSObjectProtocol & CharacterListRoutingLogic & CharacterListDataPassing)?
     
-    let searchController = UISearchController(searchResultsController: nil)
+    let searchBar = UISearchBar()
     let layout = UICollectionViewFlowLayout()
     
     // MARK: Object lifecycle
@@ -31,13 +32,14 @@ class CharacterListViewController: UICollectionViewController, UICollectionViewD
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
     {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         setup()
     }
     
     required init?(coder aDecoder: NSCoder)
     {
         super.init(coder: aDecoder)
-        
+        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         setup()
     }
     
@@ -56,23 +58,6 @@ class CharacterListViewController: UICollectionViewController, UICollectionViewD
         presenter.viewController = viewController
         router.viewController = viewController
         router.dataStore = interactor
-        
-        collectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
-        title = "Character List"
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(CharacterCell.self, forCellWithReuseIdentifier: "CharacterCell")
-        
-        view.backgroundColor = .white
-        collectionView.backgroundColor = .white
-        
-        collectionView.addSubview(searchController.searchBar)
-        
-        searchController.searchBar.translatesAutoresizingMaskIntoConstraints = false;
-        searchController.searchBar.widthAnchor.constraint(equalTo: collectionView.widthAnchor, constant: 0.95).isActive = true
-        searchController.searchBar.heightAnchor.constraint(equalToConstant: 70).isActive = true
-        searchController.searchBar.topAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.topAnchor).isActive = true
-        searchController.searchBar.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
     }
     
     // MARK: Routing
@@ -93,6 +78,27 @@ class CharacterListViewController: UICollectionViewController, UICollectionViewD
     {
         super.viewDidLoad()
         
+        title = "Character List"
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.register(CharacterCell.self, forCellWithReuseIdentifier: "CharacterCell")
+        
+        view.backgroundColor = .white
+        collectionView.backgroundColor = .white
+        
+        collectionView.addSubview(searchBar)
+        searchBar.delegate = self
+        
+        searchBar.placeholder = "Search character"
+        searchBar.searchTextField.clearButtonMode = .always
+        searchBar.returnKeyType = .done
+        
+        searchBar.translatesAutoresizingMaskIntoConstraints = false
+        searchBar.widthAnchor.constraint(equalTo: collectionView.widthAnchor, constant: 0.95).isActive = true
+        searchBar.heightAnchor.constraint(equalToConstant: 70).isActive = true
+        searchBar.topAnchor.constraint(equalTo: collectionView.safeAreaLayoutGuide.topAnchor).isActive = true
+        searchBar.centerXAnchor.constraint(equalTo: collectionView.centerXAnchor).isActive = true
+        
         loadCharacterList()
     }
     
@@ -107,27 +113,28 @@ class CharacterListViewController: UICollectionViewController, UICollectionViewD
     func displayCharacterList(viewModel: CharacterList.LoadCharacters.ViewModel)
     {
         characterList = viewModel.characterListResult
+        filteredCharacters = characterList
         collectionView.reloadData()
     }
     
     // MARK: Collectionview delegates
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let character = characterList[indexPath.row]
+        let character = filteredCharacters[indexPath.row]
         let characterCell = collectionView.dequeueReusableCell(withReuseIdentifier: "CharacterCell", for: indexPath) as? CharacterCell
         
         characterCell!.SetCharacter(character: character)
-                
+        
         return characterCell!
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        router?.dataStore?.character = characterList[indexPath.row]
+        router?.dataStore?.character = filteredCharacters[indexPath.row]
         router?.routeToCharacterDetails()
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return characterList.count
+        return filteredCharacters.count
     }
     
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -146,8 +153,43 @@ class CharacterListViewController: UICollectionViewController, UICollectionViewD
         return CGSize(width: 100, height: 100)
     }
     
+    override func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        searchBar.resignFirstResponder()
+    }
+    
+    // MARK: Change orientation
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.collectionViewLayout.invalidateLayout()
+    }
+    
+    // MARK: Searchbar delegate
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if (searchText == "") {
+            filterContentForSearchText(searchText)
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        filterContentForSearchText(searchBar.searchTextField.text ?? "")
+        
+        if (searchBar.searchTextField.text ?? "" == "") {
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    func filterContentForSearchText(_ searchText: String) {
+        filteredCharacters = characterList.filter({ (searchedCharacter) -> Bool in
+            return searchedCharacter.name.lowercased().hasPrefix(searchText.lowercased()) || searchText == ""
+        })
+        
+        collectionView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
     }
 }

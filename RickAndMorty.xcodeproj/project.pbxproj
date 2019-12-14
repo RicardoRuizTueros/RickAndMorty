@@ -17,6 +17,8 @@
 		8C7291BE23A4128900D93164 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7291BD23A4128900D93164 /* UIImageViewExtension.swift */; };
 		8C7291BF23A4128900D93164 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7291BD23A4128900D93164 /* UIImageViewExtension.swift */; };
 		8C7291C023A4128900D93164 /* UIImageViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7291BD23A4128900D93164 /* UIImageViewExtension.swift */; };
+		8C72920623A5270100D93164 /* CharacterListUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72920523A5270100D93164 /* CharacterListUITest.swift */; };
+		8C72920C23A52B8400D93164 /* CharacterDetailsUITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C72920B23A52B8400D93164 /* CharacterDetailsUITest.swift */; };
 		8C98259C23A2EF6B006EEE60 /* CharacterDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C98259623A2EF6B006EEE60 /* CharacterDetailsPresenter.swift */; };
 		8C98259D23A2EF6B006EEE60 /* CharacterDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C98259623A2EF6B006EEE60 /* CharacterDetailsPresenter.swift */; };
 		8C98259E23A2EF6B006EEE60 /* CharacterDetailsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C98259623A2EF6B006EEE60 /* CharacterDetailsPresenter.swift */; };
@@ -87,6 +89,8 @@
 		8C714CD323A3D1A100CB2E77 /* CharacterListPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListPresenterTests.swift; sourceTree = "<group>"; };
 		8C7291B923A4125900D93164 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		8C7291BD23A4128900D93164 /* UIImageViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtension.swift; sourceTree = "<group>"; };
+		8C72920523A5270100D93164 /* CharacterListUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterListUITest.swift; sourceTree = "<group>"; };
+		8C72920B23A52B8400D93164 /* CharacterDetailsUITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsUITest.swift; sourceTree = "<group>"; };
 		8C98259623A2EF6B006EEE60 /* CharacterDetailsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsPresenter.swift; sourceTree = "<group>"; };
 		8C98259723A2EF6B006EEE60 /* CharacterDetailsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsWorker.swift; sourceTree = "<group>"; };
 		8C98259823A2EF6B006EEE60 /* CharacterDetailsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsRouter.swift; sourceTree = "<group>"; };
@@ -236,6 +240,8 @@
 			isa = PBXGroup;
 			children = (
 				8CC40E5123A28D5500AD1533 /* Info.plist */,
+				8C72920523A5270100D93164 /* CharacterListUITest.swift */,
+				8C72920B23A52B8400D93164 /* CharacterDetailsUITest.swift */,
 			);
 			path = RickAndMortyUITests;
 			sourceTree = "<group>";
@@ -452,8 +458,10 @@
 				8C9825A123A2EF6B006EEE60 /* CharacterDetailsWorker.swift in Sources */,
 				8C9825AD23A2EF6B006EEE60 /* CharacterDetailsInteractor.swift in Sources */,
 				8CAA36EA23A2933700ABF8B2 /* CharacterListWorker.swift in Sources */,
+				8C72920C23A52B8400D93164 /* CharacterDetailsUITest.swift in Sources */,
 				8C98259E23A2EF6B006EEE60 /* CharacterDetailsPresenter.swift in Sources */,
 				8CAA36F323A2933700ABF8B2 /* CharacterListViewController.swift in Sources */,
+				8C72920623A5270100D93164 /* CharacterListUITest.swift in Sources */,
 				8CAA36F023A2933700ABF8B2 /* CharacterListModels.swift in Sources */,
 				8CAA36FB23A29A1200ABF8B2 /* CharacterListResult.swift in Sources */,
 				8C9825A723A2EF6B006EEE60 /* CharacterDetailsModels.swift in Sources */,
@@ -617,7 +625,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z9S357BE2F;
 				INFOPLIST_FILE = RickAndMorty/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -636,7 +644,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Z9S357BE2F;
 				INFOPLIST_FILE = RickAndMorty/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
